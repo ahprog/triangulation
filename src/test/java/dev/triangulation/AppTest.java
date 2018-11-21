@@ -1,4 +1,4 @@
-package com.algo.devoir3;
+package dev.triangulation;
 
 import static org.junit.Assert.assertTrue;
 
