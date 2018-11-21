@@ -10,6 +10,9 @@ Tuto installation IntelliJ:
 
 Tuto compilation et run :
   + soit utiliser IntelliJ
-  + soit on utilise ```mvn clean install``` pour compiler (```mvn clean install -DskipTests``` pour ne pas faire les tests)
-    puis ```java -jar target/triangulation-1.0.jar```
+  + soit on utilise\
+      ```mvn clean install``` pour compiler avec les tests\
+      ```mvn clean install -DskipTests``` pour ne pas faire les tests\
+    puis \
+      ```java -jar target/triangulation-1.0.jar```
     
