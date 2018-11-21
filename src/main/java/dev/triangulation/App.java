@@ -1,4 +1,4 @@
-package triangulation;
+package dev.triangulation;
 
 /**
  * Hello world!
