@@ -23,5 +23,5 @@ Le projet est crée avec Maven 3.3.9 et le Java SDK 11
       
     puis :<br/>
     
-      ```java -jar target/triangulation-1.0.jar```
+    - ```java -jar target/triangulation-1.0.jar```
     
