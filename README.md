@@ -16,10 +16,10 @@ Le projet est crée avec Maven 3.3.9 et le Java SDK 11
   + soit utiliser IntelliJ
   
   + soit on utilise :<br/>
-  
-      ```mvn clean install``` pour compiler avec les tests<br/>
-      
-      ```mvn clean install -DskipTests``` pour ne pas faire les tests<br/>
+    
+    - ```mvn clean install``` pour compiler avec les tests<br/>
+    
+    - ```mvn clean install -DskipTests``` pour ne pas faire les tests<br/>
       
     puis :<br/>
     
