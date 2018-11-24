@@ -1,11 +1,8 @@
 package dev.triangulation;
 
 import dev.triangulation.graphics.AppWindow;
-import dev.triangulation.graphics.DisplayPanel;
 import dev.triangulation.graphics.DrawablePoint;
-import dev.triangulation.graphics.GUIPanel;
 
-import java.awt.*;
 import java.util.Comparator;
 import java.util.SortedSet;
 import java.util.TreeSet;

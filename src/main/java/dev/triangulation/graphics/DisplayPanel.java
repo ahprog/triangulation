@@ -15,11 +15,11 @@ public class DisplayPanel extends JPanel {
         points = points_;
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent event) {
-                System.out.print(points.size());
                 points.add(new DrawablePoint(event.getX(), event.getY()));
                 repaint();
             }
         });
+        this.setBackground(Color.WHITE);
     }
 
     public void paintComponent(Graphics g) {
@@ -30,5 +30,10 @@ public class DisplayPanel extends JPanel {
             point.draw(g);
         }
         g.setColor(oldColor);
+    }
+
+    public void clear() {
+        points.clear();
+        repaint();
     }
 }

@@ -21,12 +21,10 @@ public class AppWindow extends JFrame {
         };
 
         DisplayPanel displayPanel = new DisplayPanel(points);
-        displayPanel.setBackground(Color.WHITE);
 
-        GUIPanel guiPanel = new GUIPanel(points);
+        GUIPanel guiPanel = new GUIPanel(points, displayPanel);
         guiPanel.setPreferredSize(new Dimension(200, height));
         guiPanel.setMaximumSize(new Dimension(200, height));
-        guiPanel.setBackground(Color.PINK);
 
         JPanel mainPanel = new JPanel();
         BoxLayout borderLayout = new BoxLayout(mainPanel, BoxLayout.X_AXIS);
@@ -38,6 +36,7 @@ public class AppWindow extends JFrame {
         this.setMinimumSize(new Dimension(400, 300));
         this.addWindowListener(windowAdapter);
         this.add(mainPanel);
+
         this.pack();
         this.setVisible(true);
     }
