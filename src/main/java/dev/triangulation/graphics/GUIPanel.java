@@ -18,6 +18,7 @@ public class GUIPanel extends JPanel {
 
         JPanel infoPanel = new JPanel();
         JPanel randomizePanel = new JPanel();
+        randomizePanel.setLayout(new BoxLayout(randomizePanel, BoxLayout.PAGE_AXIS));
         JPanel launchPanel = new JPanel();
 
         JLabel label1 = new JLabel("Hey ça marche");
@@ -31,13 +32,25 @@ public class GUIPanel extends JPanel {
             }
         });
 
-        JButton buttonRandomize = new JButton("Generer 10 points");
+        JPanel setNumberPointsPanel = new JPanel();
+        setNumberPointsPanel.setBackground(color);
+        JLabel labelRandomize = new JLabel("Nombre de points :");
+        labelRandomize.setBackground(color);
+
+        final SpinnerNumberModel numberOfPointsRandomModel = new SpinnerNumberModel(3, 3, 420, 1);
+        final JSpinner numberOfPointsInput = new JSpinner(numberOfPointsRandomModel);
+        numberOfPointsInput.setBackground(color);
+        setNumberPointsPanel.add(labelRandomize);
+        setNumberPointsPanel.add(numberOfPointsInput);
+
+        JButton buttonRandomize = new JButton("Generer");
         buttonRandomize.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                displayPanel.newPoints(PointsGenerator.generate(10, displayPanel.getWidth(), displayPanel.getHeight()));
+                displayPanel.newPoints(PointsGenerator.generate(numberOfPointsRandomModel.getNumber().intValue(), displayPanel.getWidth(), displayPanel.getHeight()));
             }
         });
+        randomizePanel.add(setNumberPointsPanel);
         randomizePanel.add(buttonRandomize);
 
         JButton buttonLaunch = new JButton("Calculer");
