@@ -1,5 +1,7 @@
 package dev.triangulation.graphics;
 
+import dev.triangulation.compute.TriangulateShape;
+
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -19,6 +21,8 @@ public class AppWindow extends JFrame {
                 System.exit(0);
             }
         };
+
+        TriangulateShape computedShape = new TriangulateShape(points);
 
         DisplayPanel displayPanel = new DisplayPanel(points);
 
