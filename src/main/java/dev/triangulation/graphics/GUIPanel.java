@@ -1,6 +1,7 @@
 package dev.triangulation.graphics;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +11,7 @@ public class GUIPanel extends JPanel {
     public GUIPanel(final DisplayPanel displayPanel) {
 
         Color color = Color.PINK;
-
+        Font font = new Font(Font.SANS_SERIF, Font.PLAIN, 13);
         JPanel mainPanel = new JPanel();
         mainPanel.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
 
@@ -21,10 +22,12 @@ public class GUIPanel extends JPanel {
         randomizePanel.setLayout(new BoxLayout(randomizePanel, BoxLayout.PAGE_AXIS));
         JPanel launchPanel = new JPanel();
 
-        JLabel label1 = new JLabel("Hey ça marche");
+        JLabel label1 = new JLabel("<html><b>Triangulator</b><br/>Hey ça marche</html>");
+        label1.setFont(font);
         infoPanel.add(label1);
 
         JButton buttonClear = new JButton("Effacer");
+        buttonClear.setFont(font);
         buttonClear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -34,16 +37,18 @@ public class GUIPanel extends JPanel {
 
         JPanel setNumberPointsPanel = new JPanel();
         setNumberPointsPanel.setBackground(color);
+        setNumberPointsPanel.setBorder(new EmptyBorder(0, 0, 10, 0));
         JLabel labelRandomize = new JLabel("Nombre de points :");
+        labelRandomize.setFont(font);
         labelRandomize.setBackground(color);
 
         final SpinnerNumberModel numberOfPointsRandomModel = new SpinnerNumberModel(3, 3, 420, 1);
         final JSpinner numberOfPointsInput = new JSpinner(numberOfPointsRandomModel);
-        numberOfPointsInput.setBackground(color);
         setNumberPointsPanel.add(labelRandomize);
         setNumberPointsPanel.add(numberOfPointsInput);
 
         JButton buttonRandomize = new JButton("Generer");
+        buttonRandomize.setFont(font);
         buttonRandomize.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,6 +59,7 @@ public class GUIPanel extends JPanel {
         randomizePanel.add(buttonRandomize);
 
         JButton buttonLaunch = new JButton("Calculer");
+        buttonLaunch.setFont(font);
         launchPanel.add(buttonClear);
         launchPanel.add(buttonLaunch);
 
@@ -67,6 +73,11 @@ public class GUIPanel extends JPanel {
         separator2.setBackground(color);
         mainPanel.setBackground(color);
         this.setBackground(color);
+
+
+        infoPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
+        randomizePanel.setBorder(new EmptyBorder(10, 0, 10, 0));
+        launchPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
 
         mainPanel.add(infoPanel);
         mainPanel.add(separator1, BorderLayout.CENTER);
