@@ -20,6 +20,8 @@ public class App
             public int compare(DrawablePoint point1, DrawablePoint point2) {
                 if (point1.getX() > point2.getX()) return 1;
                 else if (point1.getX() < point2.getX()) return -1;
+                else if (point1.getY() > point2.getY()) return 1;
+                else if (point1.getY() < point2.getY()) return -1;
                 else return 0;
             }
         });
