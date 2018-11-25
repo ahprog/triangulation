@@ -22,7 +22,7 @@ public class AppWindow extends JFrame {
 
         DisplayPanel displayPanel = new DisplayPanel(points);
 
-        GUIPanel guiPanel = new GUIPanel(points, displayPanel);
+        GUIPanel guiPanel = new GUIPanel(displayPanel);
         guiPanel.setPreferredSize(new Dimension(200, height));
         guiPanel.setMaximumSize(new Dimension(200, height));
 

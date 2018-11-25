@@ -32,6 +32,11 @@ public class DisplayPanel extends JPanel {
         g.setColor(oldColor);
     }
 
+    public void newPoints(SortedSet<DrawablePoint> points) {
+        this.points = points;
+        repaint();
+    }
+
     public void clear() {
         points.clear();
         repaint();
