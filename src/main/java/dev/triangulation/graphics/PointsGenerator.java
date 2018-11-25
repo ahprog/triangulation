@@ -7,6 +7,12 @@ import java.util.TreeSet;
 public class PointsGenerator {
 
     public static SortedSet<DrawablePoint> generate(int numberOfPoints, int maxX, int maxY) {
+        int offset = 0;
+
+        if (maxX > 30 && maxY > 30) {
+            offset = 10;
+        }
+
         SortedSet<DrawablePoint> randomizedPoints = new TreeSet<DrawablePoint>(new Comparator<DrawablePoint>() {
             @Override
             public int compare(DrawablePoint point1, DrawablePoint point2) {
@@ -19,7 +25,7 @@ public class PointsGenerator {
         });
 
         for (int index = 0; index < numberOfPoints; index++) {
-            randomizedPoints.add(new DrawablePoint((int)(Math.random() * maxX), (int)(Math.random() * maxY)));
+            randomizedPoints.add(new DrawablePoint((int)(offset + (Math.random() * (maxX - (offset * 2)))), (int)(offset + (Math.random() * (maxY - (offset * 2))))));
         }
 
         return randomizedPoints;
