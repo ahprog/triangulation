@@ -1,5 +1,7 @@
 package dev.triangulation.graphics;
 
+import dev.triangulation.compute.TriangulateShape;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -59,6 +61,13 @@ public class GUIPanel extends JPanel {
         randomizePanel.add(buttonRandomize);
 
         JButton buttonLaunch = new JButton("Calculer");
+        buttonLaunch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                displayPanel.repaint();
+                TriangulateShape.drawConvexHull(displayPanel.getPoints(), displayPanel.getGraphics());
+            }
+        });
         buttonLaunch.setFont(font);
         launchPanel.add(buttonClear);
         launchPanel.add(buttonLaunch);

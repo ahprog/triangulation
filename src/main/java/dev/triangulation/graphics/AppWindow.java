@@ -22,8 +22,6 @@ public class AppWindow extends JFrame {
             }
         };
 
-        TriangulateShape computedShape = new TriangulateShape(points);
-
         DisplayPanel displayPanel = new DisplayPanel(points);
 
         GUIPanel guiPanel = new GUIPanel(displayPanel);
