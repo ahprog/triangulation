@@ -1,5 +1,6 @@
 package dev.triangulation.graphics;
 
+import dev.triangulation.compute.PointsGenerator;
 import dev.triangulation.compute.DrawConvexHull;
 import dev.triangulation.compute.TriangulateShape;
 
@@ -8,7 +9,6 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.SortedSet;
 
 public class GUIPanel extends JPanel {
     public GUIPanel(final DisplayPanel displayPanel) {

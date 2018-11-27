@@ -1,5 +1,6 @@
 package dev.triangulation;
 
+import dev.triangulation.compute.PointsComparator;
 import dev.triangulation.graphics.AppWindow;
 import dev.triangulation.graphics.DrawablePoint;
 
@@ -15,16 +16,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        SortedSet<DrawablePoint> points = new TreeSet<DrawablePoint>(new Comparator<DrawablePoint>() {
-            @Override
-            public int compare(DrawablePoint point1, DrawablePoint point2) {
-                if (point1.getX() > point2.getX()) return 1;
-                else if (point1.getX() < point2.getX()) return -1;
-                else if (point1.getY() > point2.getY()) return 1;
-                else if (point1.getY() < point2.getY()) return -1;
-                else return 0;
-            }
-        });
+        SortedSet<DrawablePoint> points = new TreeSet<DrawablePoint>(new PointsComparator());
 
         AppWindow appWindow = new AppWindow(600, 500, points);
     }
