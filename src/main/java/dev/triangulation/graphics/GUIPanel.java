@@ -1,5 +1,6 @@
 package dev.triangulation.graphics;
 
+import dev.triangulation.compute.DrawConvexHull;
 import dev.triangulation.compute.TriangulateShape;
 
 import javax.swing.*;
@@ -65,7 +66,7 @@ public class GUIPanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 displayPanel.repaint();
-                TriangulateShape.drawConvexHull(displayPanel.getPoints(), displayPanel.getGraphics());
+                DrawConvexHull.drawConvexHull(displayPanel.getPoints(), displayPanel.getGraphics());
             }
         });
         buttonLaunch.setFont(font);

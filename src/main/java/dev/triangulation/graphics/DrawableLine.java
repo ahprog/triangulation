@@ -14,4 +14,8 @@ public class DrawableLine {
     public void draw(Graphics graphics) {
         graphics.drawLine(point1.getX(), point1.getY(), point2.getX(), point2.getY());
     }
+
+    public static void drawLine(DrawablePoint point1, DrawablePoint point2, Graphics graphics){
+        graphics.drawLine(point1.getX(), point1.getY(), point2.getX(), point2.getY());
+    }
 }

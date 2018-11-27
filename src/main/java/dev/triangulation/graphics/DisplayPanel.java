@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.SortedSet;
 import javax.swing.JPanel;
 
@@ -32,8 +34,9 @@ public class DisplayPanel extends JPanel {
         g.setColor(oldColor);
     }
 
-    public SortedSet<DrawablePoint> getPoints() {
-        return points;
+    public ArrayList<DrawablePoint> getPoints() {
+        ArrayList<DrawablePoint> pointsList = new ArrayList<DrawablePoint>(points);
+        return pointsList;
     }
 
     public void newPoints(SortedSet<DrawablePoint> points) {
