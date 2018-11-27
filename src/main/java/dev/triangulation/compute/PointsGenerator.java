@@ -1,4 +1,6 @@
-package dev.triangulation.graphics;
+package dev.triangulation.compute;
+
+import dev.triangulation.graphics.DrawablePoint;
 
 import java.util.Comparator;
 import java.util.SortedSet;
@@ -13,16 +15,7 @@ public class PointsGenerator {
             offset = 10;
         }
 
-        SortedSet<DrawablePoint> randomizedPoints = new TreeSet<DrawablePoint>(new Comparator<DrawablePoint>() {
-            @Override
-            public int compare(DrawablePoint point1, DrawablePoint point2) {
-                if (point1.getX() > point2.getX()) return 1;
-                else if (point1.getX() < point2.getX()) return -1;
-                else if (point1.getY() > point2.getY()) return 1;
-                else if (point1.getY() < point2.getY()) return -1;
-                else return 0;
-            }
-        });
+        SortedSet<DrawablePoint> randomizedPoints = new TreeSet<DrawablePoint>(new PointsComparator());
 
         for (int index = 0; index < numberOfPoints; index++) {
             randomizedPoints.add(new DrawablePoint((int)(offset + (Math.random() * (maxX - (offset * 2)))), (int)(offset + (Math.random() * (maxY - (offset * 2))))));
