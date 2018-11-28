@@ -12,6 +12,10 @@ import javax.swing.JPanel;
 public class DisplayPanel extends JPanel {
 
     private SortedSet<DrawablePoint> points;
+    private DrawConvexHull convexHull;
+    private DrawTriangulateShape triangulation;
+
+    private boolean convexHullVisible, triangulationVisible;
 
     public DisplayPanel(SortedSet<DrawablePoint> points_) {
         points = points_;
@@ -31,7 +35,22 @@ public class DisplayPanel extends JPanel {
         for (DrawablePoint point : points) {
             point.draw(g);
         }
+        if(convexHullVisible)
+            convexHull.draw(g);
+        if(triangulationVisible)
+            triangulation.draw(g);
+
         g.setColor(oldColor);
+    }
+
+    public void newConvHull(ArrayList<DrawablePoint> points){
+        this.convexHull = new DrawConvexHull(points);
+        repaint();
+    }
+
+    public void newTriangulation(ArrayList<DrawablePoint> points){
+        this.triangulation = new DrawTriangulateShape(points);
+        repaint();
     }
 
     public ArrayList<DrawablePoint> getPoints() {
@@ -46,6 +65,16 @@ public class DisplayPanel extends JPanel {
 
     public void clear() {
         points.clear();
+        convexHullVisible = false;
+        triangulationVisible = false;
         repaint();
+    }
+
+    public void setConvexHullVisible(boolean newValue){
+        this.convexHullVisible = newValue;
+    }
+
+    public void setTriangulationVisible(boolean newValue){
+        this.triangulationVisible = newValue;
     }
 }

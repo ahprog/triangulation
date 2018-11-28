@@ -10,12 +10,18 @@ import java.util.ArrayList;
 import java.util.SortedSet;
 
 public class DrawConvexHull {
-    public static void drawConvexHull(ArrayList<DrawablePoint> points, Graphics graphics) {
-        ArrayList<DrawablePoint> lines = ConvexHull.getConvexHull(points);
 
-        for(int index=0 ; index<lines.size()-1 ; index++) {
-            DrawableLine.drawLine(lines.get(index), lines.get(index+1), graphics);
+    public ConvexHull convexHull;
+
+    public DrawConvexHull(ArrayList<DrawablePoint> points){
+        convexHull = new ConvexHull(points);
+    }
+
+    public void draw(Graphics graphics) {
+
+        for(int index=0 ; index<convexHull.pointsConvHull.size()-1 ; index++) {
+            graphics.drawLine(convexHull.pointsConvHull.get(index).getX(), convexHull.pointsConvHull.get(index).getY(), convexHull.pointsConvHull.get(index+1).getX(), convexHull.pointsConvHull.get(index+1).getY());
         }
-        DrawableLine.drawLine(lines.get(lines.size()-1), lines.get(0), graphics);
+        graphics.drawLine(convexHull.pointsConvHull.get(convexHull.pointsConvHull.size()-1).getX(), convexHull.pointsConvHull.get(convexHull.pointsConvHull.size()-1).getY(), convexHull.pointsConvHull.get(0).getX(), convexHull.pointsConvHull.get(0).getY());
     }
 }

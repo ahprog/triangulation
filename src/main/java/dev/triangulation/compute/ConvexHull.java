@@ -10,7 +10,13 @@ import java.util.SortedSet;
 
 public class ConvexHull {
 
-    public static ArrayList<DrawablePoint> getConvexHull(ArrayList<DrawablePoint> points) {
+    public ArrayList<DrawablePoint> pointsConvHull;
+
+    public ConvexHull(ArrayList<DrawablePoint> points){
+        pointsConvHull = getConvexHull(points);
+    }
+
+    public  ArrayList<DrawablePoint> getConvexHull(ArrayList<DrawablePoint> points) {
         ArrayList<DrawablePoint> convexHull = new ArrayList<DrawablePoint>();
 
         //On copie les points ordonnés du SortedSet dans une List pour pouvoir la diviser en deux groupes
@@ -18,7 +24,7 @@ public class ConvexHull {
 
         int test = pointsList.size();
         if( test <= 3){
-            convexHull.addAll(pointsList);
+
 
             if( test == 3 ){
                 if(isAbove(pointsList.get(0), pointsList.get(1), pointsList.get(2))<0) {
@@ -27,7 +33,9 @@ public class ConvexHull {
                     pointsList.add(ptTemp);
                 }
             }
-            return pointsList;
+            convexHull.addAll(pointsList);
+
+            return convexHull;
         }
 
         ArrayList<DrawablePoint> pointsList1 = new ArrayList<DrawablePoint>();
@@ -50,7 +58,7 @@ public class ConvexHull {
     }
 
 
-    public static ArrayList<DrawablePoint> fusion(List<DrawablePoint> pointsList1, List<DrawablePoint> pointsList2){
+    public  ArrayList<DrawablePoint> fusion(List<DrawablePoint> pointsList1, List<DrawablePoint> pointsList2){
 
         //Le point le plus à droite de la liste de point 1
         int ptMaxAbs = 0;
@@ -131,7 +139,7 @@ public class ConvexHull {
         return convexHull;
     }
 
-    public static double isAbove(DrawablePoint pt1, DrawablePoint pt2, DrawablePoint pt3){
+    public double isAbove(DrawablePoint pt1, DrawablePoint pt2, DrawablePoint pt3){
 
         double vec1X = pt1.getX() - pt2.getX();
         double vec1Y = pt1.getY() - pt2.getY();

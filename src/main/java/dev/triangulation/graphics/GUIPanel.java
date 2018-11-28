@@ -53,23 +53,40 @@ public class GUIPanel extends JPanel {
         buttonRandomize.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                displayPanel.clear();
                 displayPanel.newPoints(PointsGenerator.generate(numberOfPointsRandomModel.getNumber().intValue(), displayPanel.getWidth(), displayPanel.getHeight()));
             }
         });
         randomizePanel.add(setNumberPointsPanel);
         randomizePanel.add(buttonRandomize);
 
+        //Bouton Calcul enveloppe convexe
+
         JButton buttonLaunch = new JButton("Calculer");
         buttonLaunch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                displayPanel.repaint();
-                DrawConvexHull.drawConvexHull(displayPanel.getPoints(), displayPanel.getGraphics());
+                displayPanel.newConvHull(displayPanel.getPoints());
+                displayPanel.setConvexHullVisible(true);
+                //DrawConvexHull.drawConvexHull(displayPanel.getPoints(), displayPanel.getGraphics());
             }
         });
         buttonLaunch.setFont(font);
         launchPanel.add(buttonClear);
         launchPanel.add(buttonLaunch);
+
+        //Bouton Calcul triangulation quelconque
+
+        JButton buttonTriangulation = new JButton("Triangulation");
+        buttonTriangulation.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                displayPanel.newTriangulation(displayPanel.getPoints());
+                displayPanel.setTriangulationVisible(true);
+            }
+        });
+        buttonTriangulation.setFont(font);
+        launchPanel.add(buttonTriangulation);
 
         JSeparator separator1 = new JSeparator(SwingConstants.HORIZONTAL);
         JSeparator separator2 = new JSeparator(SwingConstants.HORIZONTAL);
