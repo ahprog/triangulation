@@ -21,7 +21,7 @@ public class ConvexHull {
             convexHull.addAll(pointsList);
 
             if( test == 3 ){
-                if(isAbove(pointsList.get(0), pointsList.get(1), pointsList.get(2))>0) {
+                if(isAbove(pointsList.get(0), pointsList.get(1), pointsList.get(2))<0) {
                     DrawablePoint ptTemp = pointsList.get(1);
                     pointsList.remove( 1);
                     pointsList.add(ptTemp);

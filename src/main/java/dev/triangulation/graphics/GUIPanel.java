@@ -1,8 +1,6 @@
 package dev.triangulation.graphics;
 
 import dev.triangulation.compute.PointsGenerator;
-import dev.triangulation.compute.DrawConvexHull;
-import dev.triangulation.compute.TriangulateShape;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

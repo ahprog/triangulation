@@ -1,5 +1,6 @@
-package dev.triangulation.compute;
+package dev.triangulation.graphics;
 
+import dev.triangulation.compute.ConvexHull;
 import dev.triangulation.graphics.DrawableLine;
 import dev.triangulation.graphics.DrawablePoint;
 

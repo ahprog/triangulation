@@ -1,4 +1,4 @@
-package dev.triangulation.compute;
+package dev.triangulation.graphics;
 
 public class DrawTriangulateShape {
 }
