@@ -12,7 +12,7 @@ import java.util.SortedSet;
 public class TriangulateShape {
 
 
-    private static ArrayList<DrawTriangle> triangleArrayList = new ArrayList<DrawTriangle>();
+    private ArrayList<DrawTriangle> triangleArrayList = new ArrayList<DrawTriangle>();
 
     public TriangulateShape(ArrayList<DrawablePoint> points){
         getTriangulationShape(points);
@@ -20,23 +20,16 @@ public class TriangulateShape {
 
 
     public ArrayList<DrawablePoint> getTriangulationShape(ArrayList<DrawablePoint> points) {
-        /*
-        for(int index=0 ; index<points.size()-2 ; index++){
-            triangleArrayList.add(new Triangle(points.get(index), points.get(index+1), points.get(index+2)));
-        }
-        */
         if(points.size() <= 3) {
             if (points.size() == 3) {
                 if(isAbove(points.get(0), points.get(1), points.get(2))<0){
                     DrawablePoint ptTemp = points.get(1);
                     points.remove( 1);
                     points.add(ptTemp);
-
-                    this.triangleArrayList.add(new DrawTriangle(points.get(0), points.get(1), points.get(2)));
                 }
-
-                return points;
+                this.triangleArrayList.add(new DrawTriangle(points.get(0), points.get(1), points.get(2)));
             }
+            return points;
         }
 
         ArrayList<DrawablePoint> ptList1 = new ArrayList<DrawablePoint>();
@@ -80,10 +73,12 @@ public class TriangulateShape {
             continu = false;
 
             if(isAbove(pointsList2.get(ptMaxHeight2), pointsList1.get(ptMaxHeight1), pointsList1.get((ptMaxHeight1+1)%pointsList1.size())) < 0){
+                this.triangleArrayList.add(new DrawTriangle(pointsList2.get(ptMaxHeight2), pointsList1.get(ptMaxHeight1), pointsList1.get((ptMaxHeight1+1)%pointsList1.size())));
                 ptMaxHeight1 = (ptMaxHeight1+1)%pointsList1.size();
                 continu = true;
             }
             if(isAbove(pointsList1.get(ptMaxHeight1), pointsList2.get(ptMaxHeight2), pointsList2.get((ptMaxHeight2-1+pointsList2.size())%pointsList2.size())) > 0){
+                this.triangleArrayList.add(new DrawTriangle(pointsList1.get(ptMaxHeight1), pointsList2.get(ptMaxHeight2), pointsList2.get((ptMaxHeight2-1+pointsList2.size())%pointsList2.size())));
                 ptMaxHeight2 = (ptMaxHeight2-1+pointsList2.size())%pointsList2.size();
                 continu = true;
             }
@@ -100,10 +95,12 @@ public class TriangulateShape {
             continu = false;
 
             if(isAbove(pointsList2.get(ptMinHeight2), pointsList1.get(ptMinHeight1), pointsList1.get((ptMinHeight1-1+pointsList1.size())%pointsList1.size())) > 0){
+                this.triangleArrayList.add(new DrawTriangle(pointsList2.get(ptMinHeight2), pointsList1.get(ptMinHeight1), pointsList1.get((ptMinHeight1-1+pointsList1.size())%pointsList1.size())));
                 ptMinHeight1 = (ptMinHeight1-1+pointsList1.size())%pointsList1.size();
                 continu = true;
             }
             if(isAbove(pointsList1.get(ptMinHeight1), pointsList2.get(ptMinHeight2), pointsList2.get((ptMinHeight2+1)%pointsList2.size())) < 0){
+                this.triangleArrayList.add(new DrawTriangle(pointsList1.get(ptMinHeight1), pointsList2.get(ptMinHeight2), pointsList2.get((ptMinHeight2+1)%pointsList2.size())));
                 ptMinHeight2 = (ptMinHeight2+1)%pointsList2.size();
                 continu = true;
             }
@@ -135,14 +132,14 @@ public class TriangulateShape {
             }
         }
 
-
+/*
         for(int index=ptMinHeight2 ; index<ptMaxHeight2 ; index++){
             this.triangleArrayList.add(new DrawTriangle(pointsList1.get(ptMinHeight1), pointsList2.get(index), pointsList2.get((index-1)%pointsList2.size())));
         }
         for(int index=ptMinHeight1 ; index<ptMaxHeight1 ; index++){
             this.triangleArrayList.add(new DrawTriangle(pointsList1.get(index), pointsList1.get(index+1), pointsList2.get(ptMaxHeight2)));
         }
-
+*/
         return convexHull;
     }
 
