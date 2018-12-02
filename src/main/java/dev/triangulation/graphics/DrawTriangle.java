@@ -14,8 +14,12 @@ public class DrawTriangle {
     }
 
     public void draw(Graphics graphics){
-        graphics.drawLine(triangle.getPt1().getX(), triangle.getPt1().getY(), triangle.getPt2().getX(), triangle.getPt2().getY());
-        graphics.drawLine(triangle.getPt2().getX(), triangle.getPt2().getY(), triangle.getPt3().getX(), triangle.getPt3().getY());
-        graphics.drawLine(triangle.getPt3().getX(), triangle.getPt3().getY(), triangle.getPt1().getX(), triangle.getPt1().getY());
+        graphics.drawLine((int)triangle.getPt1().getX(), (int)triangle.getPt1().getY(), (int)triangle.getPt2().getX(), (int)triangle.getPt2().getY());
+        graphics.drawLine((int)triangle.getPt2().getX(), (int)triangle.getPt2().getY(), (int)triangle.getPt3().getX(), (int)triangle.getPt3().getY());
+        graphics.drawLine((int)triangle.getPt3().getX(), (int)triangle.getPt3().getY(), (int)triangle.getPt1().getX(), (int)triangle.getPt1().getY());
+    }
+
+    public Triangle getTriangle(){
+        return triangle;
     }
 }

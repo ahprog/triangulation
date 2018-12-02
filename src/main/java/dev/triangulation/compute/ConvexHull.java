@@ -16,10 +16,9 @@ public class ConvexHull {
         pointsConvHull = getConvexHull(points);
     }
 
-    public  ArrayList<DrawablePoint> getConvexHull(ArrayList<DrawablePoint> points) {
+    public ArrayList<DrawablePoint> getConvexHull(ArrayList<DrawablePoint> points) {
         ArrayList<DrawablePoint> convexHull = new ArrayList<DrawablePoint>();
 
-        //On copie les points ordonnés du SortedSet dans une List pour pouvoir la diviser en deux groupes
         ArrayList<DrawablePoint> pointsList = new ArrayList<DrawablePoint>(points);
 
         int test = pointsList.size();

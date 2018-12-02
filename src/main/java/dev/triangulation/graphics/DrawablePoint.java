@@ -4,22 +4,22 @@ import java.awt.Graphics;
 
 public class DrawablePoint {
 
-    private int x, y;
+    private double x, y;
 
-    public DrawablePoint(int x, int y) {
+    public DrawablePoint(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
     public void draw(Graphics graphics) {
-        graphics.fillOval(x-5, y-5, 10, 10);
+        graphics.fillOval((int)x-5, (int)y-5, 10, 10);
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 }

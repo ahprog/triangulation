@@ -81,8 +81,12 @@ public class GUIPanel extends JPanel {
         buttonTriangulation.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                /*
                 displayPanel.newTriangulation(displayPanel.getPoints());
                 displayPanel.setTriangulationVisible(true);
+                */
+                displayPanel.newTriangulationDelaunay(displayPanel.getPoints());
+                displayPanel.setTriangulationDelaunayVisible(true);
             }
         });
         buttonTriangulation.setFont(font);

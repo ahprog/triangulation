@@ -15,12 +15,6 @@ public class DrawTriangulateShape {
     }
 
     public void draw(Graphics graphics){
-        /*
-        for(Triangle triangle : triangles.getTriangles()){
-            graphics.drawLine(triangle.getPt1().getX(), triangle.getPt1().getY(), triangle.getPt2().getX(), triangle.getPt2().getY());
-            graphics.drawLine(triangle.getPt2().getX(), triangle.getPt2().getY(), triangle.getPt3().getX(), triangle.getPt3().getY());
-            graphics.drawLine(triangle.getPt3().getX(), triangle.getPt3().getY(), triangle.getPt1().getX(), triangle.getPt1().getY());
-        }*/
 
         for(DrawTriangle triangle : triangles.getTriangles()){
             triangle.draw(graphics);

@@ -20,8 +20,8 @@ public class DrawConvexHull {
     public void draw(Graphics graphics) {
 
         for(int index=0 ; index<convexHull.pointsConvHull.size()-1 ; index++) {
-            graphics.drawLine(convexHull.pointsConvHull.get(index).getX(), convexHull.pointsConvHull.get(index).getY(), convexHull.pointsConvHull.get(index+1).getX(), convexHull.pointsConvHull.get(index+1).getY());
+            graphics.drawLine((int)convexHull.pointsConvHull.get(index).getX(), (int)convexHull.pointsConvHull.get(index).getY(), (int)convexHull.pointsConvHull.get(index+1).getX(), (int)convexHull.pointsConvHull.get(index+1).getY());
         }
-        graphics.drawLine(convexHull.pointsConvHull.get(convexHull.pointsConvHull.size()-1).getX(), convexHull.pointsConvHull.get(convexHull.pointsConvHull.size()-1).getY(), convexHull.pointsConvHull.get(0).getX(), convexHull.pointsConvHull.get(0).getY());
+        graphics.drawLine((int)convexHull.pointsConvHull.get(convexHull.pointsConvHull.size()-1).getX(), (int)convexHull.pointsConvHull.get(convexHull.pointsConvHull.size()-1).getY(), (int)convexHull.pointsConvHull.get(0).getX(), (int)convexHull.pointsConvHull.get(0).getY());
     }
 }

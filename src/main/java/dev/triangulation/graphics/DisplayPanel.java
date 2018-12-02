@@ -1,5 +1,7 @@
 package dev.triangulation.graphics;
 
+import dev.triangulation.compute.DelaunayTriangulation;
+
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
@@ -14,8 +16,9 @@ public class DisplayPanel extends JPanel {
     private SortedSet<DrawablePoint> points;
     private DrawConvexHull convexHull;
     private DrawTriangulateShape triangulation;
+    private DrawDelaunayTriangulation triangluationDelaunay;
 
-    private boolean convexHullVisible, triangulationVisible;
+    private boolean convexHullVisible, triangulationVisible, triangulationDelaunayVisible;
 
     public DisplayPanel(SortedSet<DrawablePoint> points_) {
         points = points_;
@@ -39,6 +42,8 @@ public class DisplayPanel extends JPanel {
             convexHull.draw(g);
         if(triangulationVisible)
             triangulation.draw(g);
+        if(triangulationDelaunayVisible)
+            triangluationDelaunay.draw(g);
 
         g.setColor(oldColor);
     }
@@ -50,6 +55,11 @@ public class DisplayPanel extends JPanel {
 
     public void newTriangulation(ArrayList<DrawablePoint> points){
         this.triangulation = new DrawTriangulateShape(points);
+        repaint();
+    }
+
+    public void newTriangulationDelaunay(ArrayList<DrawablePoint> points){
+        this.triangluationDelaunay = new DrawDelaunayTriangulation(points);
         repaint();
     }
 
@@ -67,6 +77,7 @@ public class DisplayPanel extends JPanel {
         points.clear();
         convexHullVisible = false;
         triangulationVisible = false;
+        triangulationDelaunayVisible = false;
         repaint();
     }
 
@@ -77,4 +88,6 @@ public class DisplayPanel extends JPanel {
     public void setTriangulationVisible(boolean newValue){
         this.triangulationVisible = newValue;
     }
+
+    public void setTriangulationDelaunayVisible(boolean newValue) { this.triangulationDelaunayVisible = newValue; }
 }
