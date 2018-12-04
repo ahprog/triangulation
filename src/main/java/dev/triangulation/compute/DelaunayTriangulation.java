@@ -1,6 +1,7 @@
 package dev.triangulation.compute;
 
 import dev.triangulation.graphics.DrawTriangle;
+import dev.triangulation.graphics.DrawableLine;
 import dev.triangulation.graphics.DrawablePoint;
 
 import java.util.ArrayList;
@@ -74,16 +75,20 @@ public class DelaunayTriangulation {
          * https://hal.inria.fr/inria-00075590/document page 16
          */
         for(DrawablePoint point : points){
-            ArrayList<DrawablePoint> ptEnvExt = new ArrayList<DrawablePoint>();
+            ArrayList<DrawableLine> linesExt = new ArrayList<DrawableLine>();
 
             for(int index=0 ; index<cirCircle.size(); index++){
                 if(isInCirCircle(point, cirCircle.get(index))){
-                    //if(!(ptEnvExt.contains(listTriangle.get(index).getTriangle().getPt1())))
+                    /*
+                    if(!(ptEnvExt.contains(listTriangle.get(index).getTriangle().getPt1())))
                         ptEnvExt.add(listTriangle.get(index).getTriangle().getPt1());
-                    //(!(ptEnvExt.contains(listTriangle.get(index).getTriangle().getPt2())))
+                    (!(ptEnvExt.contains(listTriangle.get(index).getTriangle().getPt2())))
                         ptEnvExt.add(listTriangle.get(index).getTriangle().getPt2());
-                    //if(!(ptEnvExt.contains(listTriangle.get(index).getTriangle().getPt3())))
+                    if(!(ptEnvExt.contains(listTriangle.get(index).getTriangle().getPt3())))
                         ptEnvExt.add(listTriangle.get(index).getTriangle().getPt3());
+*/                  linesExt.add(new DrawableLine(listTriangle.get(index).getTriangle().getPt1(), listTriangle.get(index).getTriangle().getPt2()));
+                    linesExt.add(new DrawableLine(listTriangle.get(index).getTriangle().getPt2(), listTriangle.get(index).getTriangle().getPt3()));
+                    linesExt.add(new DrawableLine(listTriangle.get(index).getTriangle().getPt3(), listTriangle.get(index).getTriangle().getPt1()));
 
                     listTriangle.remove(index);
                     cirCircle.remove(index);
@@ -99,10 +104,10 @@ public class DelaunayTriangulation {
             ConvexHull newVertex = new ConvexHull(ptEnvExt);
             */
 
-            ptEnvExt = getPointExt(ptEnvExt);
+            linesExt = getLinesExt(linesExt);
 
-            for(int index=0 ; index < ptEnvExt.size() ; index++){
-                listTriangle.add(new DrawTriangle(point, ptEnvExt.get(index), ptEnvExt.get((index+1)%ptEnvExt.size())));
+            for(int index=0 ; index < linesExt.size() ; index++){
+                listTriangle.add(new DrawTriangle(point, linesExt.get(index).getPoint1(), linesExt.get(index).getPoint2()));
                 cirCircle.add(getCirCircle(listTriangle.get(listTriangle.size()-1)));
             }
         }
@@ -141,12 +146,12 @@ public class DelaunayTriangulation {
 
         // Premiere mediatrice
         DrawablePoint midPoint1 = new DrawablePoint((pt1.getX() + pt2.getX()) / 2, (pt1.getY() + pt2.getY()) / 2);
-        double slope1 = (pt2.getX() - pt1.getX()) / (pt2.getY() - pt1.getY());
+        double slope1 = -((pt2.getX() - pt1.getX()) / (pt2.getY() - pt1.getY()));
         double const1 = midPoint1.getY() - midPoint1.getX() * slope1;
 
         // Seconde mediatrice
         DrawablePoint midPoint2 = new DrawablePoint((pt2.getX() + pt3.getX()) / 2, (pt2.getY() + pt3.getY()) / 2);
-        double slope2 = (pt3.getX() - pt2.getX()) / (pt3.getY() - pt2.getY());
+        double slope2 = -((pt3.getX() - pt2.getX()) / (pt3.getY() - pt2.getY()));
         double const2 = midPoint2.getY() - midPoint2.getX() * slope2;
 
         // Cercle circonscrit
@@ -205,10 +210,10 @@ public class DelaunayTriangulation {
         */
     }
 
-    public ArrayList<DrawablePoint> getPointExt(ArrayList<DrawablePoint> listPoints){
+    public ArrayList<DrawableLine> getLinesExt(ArrayList<DrawableLine> listLines){
 
         //ArrayList<DrawablePoint> points = new ArrayList<DrawablePoint>();
-        ArrayList<DrawablePoint> pointsExt = new ArrayList<DrawablePoint>();
+        ArrayList<DrawableLine> linesExt = new ArrayList<DrawableLine>();
 
         /*
         Triangle triangle;
@@ -223,22 +228,42 @@ public class DelaunayTriangulation {
 
         boolean ext;
 
-        while(!listPoints.isEmpty()){
-            DrawablePoint pt = listPoints.remove(0);
+        while(!listLines.isEmpty()){
+            DrawableLine line = listLines.remove(0);
             ext = true;
 
-            if(listPoints.remove(pt)){
-                if(listPoints.remove(pt)){
+            for(int index=0 ; index<listLines.size() ; index++){
+                if(isLinesEqual(line, listLines.get(index))){
                     ext = false;
+                    listLines.remove(listLines.get(index));
+                    index--;
                 }
             }
-
+/*
+            if(listLines.remove(line)){
+                boolean isStillDoublon = false;
+                do{
+                    isStillDoublon = listLines.remove(line);
+                }
+                while(isStillDoublon);
+                ext = false;
+            }
+*/
             if(ext){
-                pointsExt.add(pt);
+                linesExt.add(line);
             }
         }
 
-        return pointsExt;
+        return linesExt;
+    }
+
+    public boolean isLinesEqual(DrawableLine line1, DrawableLine line2){
+        if(line1.getPoint1()==line2.getPoint1() || line1.getPoint1()==line2.getPoint2()){
+            if(line1.getPoint2()==line2.getPoint1() || line1.getPoint2()==line2.getPoint2()){
+                return true;
+            }
+        }
+        return false;
     }
 
     public ArrayList<DrawTriangle> getTriangle() {

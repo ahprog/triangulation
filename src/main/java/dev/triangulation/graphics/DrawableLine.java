@@ -15,7 +15,15 @@ public class DrawableLine {
         graphics.drawLine((int)point1.getX(), (int)point1.getY(), (int)point2.getX(), (int)point2.getY());
     }
 
-    public static void drawLine(DrawablePoint point1, DrawablePoint point2, Graphics graphics){
+    public void drawLine(DrawablePoint point1, DrawablePoint point2, Graphics graphics){
         graphics.drawLine((int)point1.getX(), (int)point1.getY(), (int)point2.getX(), (int)point2.getY());
+    }
+
+    public DrawablePoint getPoint1() {
+        return point1;
+    }
+
+    public DrawablePoint getPoint2() {
+        return point2;
     }
 }
