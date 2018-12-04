@@ -143,23 +143,6 @@ public class TriangulateShape {
         return convexHull;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public ArrayList<DrawTriangle> getTriangles() { return triangleArrayList; }
 
     public double isAbove(DrawablePoint pt1, DrawablePoint pt2, DrawablePoint pt3){

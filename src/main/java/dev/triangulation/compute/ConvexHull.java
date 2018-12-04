@@ -56,7 +56,6 @@ public class ConvexHull {
         return convexHull;
     }
 
-
     public  ArrayList<DrawablePoint> fusion(List<DrawablePoint> pointsList1, List<DrawablePoint> pointsList2){
 
         //Le point le plus à droite de la liste de point 1

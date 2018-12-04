@@ -11,11 +11,12 @@ import java.util.TreeSet;
 public class DelaunayTriangulation {
 
     private ArrayList<DrawTriangle> triangleArrayList = new ArrayList<DrawTriangle>();
+    public ArrayList<Circle> cirCircle = new ArrayList<Circle>();
 
     /**
      * Permet de ne calculer qu'une fois les cercles circonscrit
      */
-    private class Circle{
+    public class Circle{
         public double centerX, centerY;
         public double radius;
 
@@ -33,7 +34,7 @@ public class DelaunayTriangulation {
     public void getDelaunayTriangulation(ArrayList<DrawablePoint> points){
 
         ArrayList<DrawTriangle> listTriangle = new ArrayList<DrawTriangle>();
-        ArrayList<Circle> cirCircle = new ArrayList<Circle>();
+        //ArrayList<Circle> cirCircle = new ArrayList<Circle>();
 
         /**
          * Definition des valeurs min et max de l'ensemble de points pour la création de la boite servant à la triangulation
@@ -79,14 +80,7 @@ public class DelaunayTriangulation {
 
             for(int index=0 ; index<cirCircle.size(); index++){
                 if(isInCirCircle(point, cirCircle.get(index))){
-                    /*
-                    if(!(ptEnvExt.contains(listTriangle.get(index).getTriangle().getPt1())))
-                        ptEnvExt.add(listTriangle.get(index).getTriangle().getPt1());
-                    (!(ptEnvExt.contains(listTriangle.get(index).getTriangle().getPt2())))
-                        ptEnvExt.add(listTriangle.get(index).getTriangle().getPt2());
-                    if(!(ptEnvExt.contains(listTriangle.get(index).getTriangle().getPt3())))
-                        ptEnvExt.add(listTriangle.get(index).getTriangle().getPt3());
-*/                  linesExt.add(new DrawableLine(listTriangle.get(index).getTriangle().getPt1(), listTriangle.get(index).getTriangle().getPt2()));
+                  linesExt.add(new DrawableLine(listTriangle.get(index).getTriangle().getPt1(), listTriangle.get(index).getTriangle().getPt2()));
                     linesExt.add(new DrawableLine(listTriangle.get(index).getTriangle().getPt2(), listTriangle.get(index).getTriangle().getPt3()));
                     linesExt.add(new DrawableLine(listTriangle.get(index).getTriangle().getPt3(), listTriangle.get(index).getTriangle().getPt1()));
 
@@ -96,14 +90,6 @@ public class DelaunayTriangulation {
                 }
             }
 
-            /*
-            SortedSet<DrawablePoint> ptEnvExtSorted = new TreeSet<DrawablePoint>(new PointsComparator());
-            ptEnvExtSorted.addAll(ptEnvExt);
-            ptEnvExt = new ArrayList<DrawablePoint>(ptEnvExtSorted);
-
-            ConvexHull newVertex = new ConvexHull(ptEnvExt);
-            */
-
             linesExt = getLinesExt(linesExt);
 
             for(int index=0 ; index < linesExt.size() ; index++){
@@ -111,6 +97,12 @@ public class DelaunayTriangulation {
                 cirCircle.add(getCirCircle(listTriangle.get(listTriangle.size()-1)));
             }
         }
+
+        //On supprime les triangles relié à la box
+        deleteTriangleFromPoint(pointBoite.get(0), listTriangle);
+        deleteTriangleFromPoint(pointBoite.get(1), listTriangle);
+        deleteTriangleFromPoint(pointBoite.get(2), listTriangle);
+        deleteTriangleFromPoint(pointBoite.get(3), listTriangle);
 
         triangleArrayList = listTriangle;
     }
@@ -264,6 +256,18 @@ public class DelaunayTriangulation {
             }
         }
         return false;
+    }
+
+    public void deleteTriangleFromPoint(DrawablePoint pt, ArrayList<DrawTriangle> listTriangle){
+        Triangle triangle;
+
+        for(int index=0 ; index<listTriangle.size() ; index++){
+            triangle = listTriangle.get(index).getTriangle();
+            if(triangle.getPt1()==pt || triangle.getPt2()==pt || triangle.getPt3()==pt){
+                listTriangle.remove(index);
+                index--;
+            }
+        }
     }
 
     public ArrayList<DrawTriangle> getTriangle() {

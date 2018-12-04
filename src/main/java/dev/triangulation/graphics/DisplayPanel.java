@@ -19,6 +19,7 @@ public class DisplayPanel extends JPanel {
     private DrawDelaunayTriangulation triangluationDelaunay;
 
     private boolean convexHullVisible, triangulationVisible, triangulationDelaunayVisible;
+    private boolean emptyCircle = false;
 
     public DisplayPanel(SortedSet<DrawablePoint> points_) {
         points = points_;
@@ -43,7 +44,7 @@ public class DisplayPanel extends JPanel {
         if(triangulationVisible)
             triangulation.draw(g);
         if(triangulationDelaunayVisible)
-            triangluationDelaunay.draw(g);
+            triangluationDelaunay.draw(g, emptyCircle);
 
         g.setColor(oldColor);
     }

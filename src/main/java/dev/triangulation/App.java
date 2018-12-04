@@ -18,6 +18,6 @@ public class App
     {
         SortedSet<DrawablePoint> points = new TreeSet<DrawablePoint>(new PointsComparator());
 
-        AppWindow appWindow = new AppWindow(600, 500, points);
+        AppWindow appWindow = new AppWindow(1000, 600, points);
     }
 }

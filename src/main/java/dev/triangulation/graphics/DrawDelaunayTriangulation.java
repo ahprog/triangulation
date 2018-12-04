@@ -12,9 +12,14 @@ public class DrawDelaunayTriangulation {
         triangles = new DelaunayTriangulation(points);
     }
 
-    public void draw(Graphics graphics){
+    public void draw(Graphics graphics, boolean emptyCircle){
         for(DrawTriangle triangle : triangles.getTriangle() ){
             triangle.draw(graphics);
+        }
+        if(emptyCircle) {
+            for (DelaunayTriangulation.Circle cercle : triangles.cirCircle) {
+                graphics.drawOval((int) (cercle.centerX - (cercle.radius)), (int) (cercle.centerY - (cercle.radius)), (int) cercle.radius * 2, (int) cercle.radius * 2);
+            }
         }
     }
 }

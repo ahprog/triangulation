@@ -27,15 +27,7 @@ public class GUIPanel extends JPanel {
         label1.setFont(font);
         infoPanel.add(label1);
 
-        JButton buttonClear = new JButton("Effacer");
-        buttonClear.setFont(font);
-        buttonClear.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                displayPanel.clear();
-            }
-        });
-
+        // Création points random
         JPanel setNumberPointsPanel = new JPanel();
         setNumberPointsPanel.setBackground(color);
         setNumberPointsPanel.setBorder(new EmptyBorder(0, 0, 10, 0));
@@ -43,7 +35,7 @@ public class GUIPanel extends JPanel {
         labelRandomize.setFont(font);
         labelRandomize.setBackground(color);
 
-        final SpinnerNumberModel numberOfPointsRandomModel = new SpinnerNumberModel(3, 3, 420, 1);
+        final SpinnerNumberModel numberOfPointsRandomModel = new SpinnerNumberModel(3, 3, 800, 1);
         final JSpinner numberOfPointsInput = new JSpinner(numberOfPointsRandomModel);
         setNumberPointsPanel.add(labelRandomize);
         setNumberPointsPanel.add(numberOfPointsInput);
@@ -61,6 +53,15 @@ public class GUIPanel extends JPanel {
         randomizePanel.add(buttonRandomize);
 
         //Bouton Calcul enveloppe convexe
+
+        JButton buttonClear = new JButton("Effacer");
+        buttonClear.setFont(font);
+        buttonClear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                displayPanel.clear();
+            }
+        });
 
         JButton buttonLaunch = new JButton("Calculer");
         buttonLaunch.addActionListener(new ActionListener() {
@@ -92,14 +93,41 @@ public class GUIPanel extends JPanel {
         buttonTriangulation.setFont(font);
         launchPanel.add(buttonTriangulation);
 
+
+        //Panel calcul et affichage convexe et triangulation
+        JPanel calculsPanel = new JPanel();
+        calculsPanel.setBackground(color);
+        calculsPanel.setBorder(new EmptyBorder(0, 0, 10, 0));
+
+        JLabel labelDynamicCalcul = new JLabel("Calcul dynamique :");
+        labelDynamicCalcul.setFont(font);
+        labelDynamicCalcul.setBackground(color);
+        JCheckBox checkDynamicCalcul = new JCheckBox();
+        checkDynamicCalcul.setBackground(color);
+
+        JLabel labelTriangulation = new JLabel("Triangulation :");
+        labelTriangulation.setFont(font);
+        labelTriangulation.setBackground(color);
+        JCheckBox checkTriangulation = new JCheckBox();
+        checkTriangulation.setBackground(color);
+
+        calculsPanel.add(labelDynamicCalcul);
+        calculsPanel.add(checkDynamicCalcul);
+        calculsPanel.add(labelTriangulation);
+        calculsPanel.add(checkTriangulation);
+        calculsPanel.setBackground(color);
+
+
         JSeparator separator1 = new JSeparator(SwingConstants.HORIZONTAL);
         JSeparator separator2 = new JSeparator(SwingConstants.HORIZONTAL);
+        JSeparator separator3 = new JSeparator(SwingConstants.HORIZONTAL);
 
         infoPanel.setBackground(color);
         randomizePanel.setBackground(color);
         launchPanel.setBackground(color);
         separator1.setBackground(color);
         separator2.setBackground(color);
+        separator3.setBackground(color);
         mainPanel.setBackground(color);
         this.setBackground(color);
 
@@ -107,12 +135,15 @@ public class GUIPanel extends JPanel {
         infoPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
         randomizePanel.setBorder(new EmptyBorder(10, 0, 10, 0));
         launchPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
+        calculsPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
 
         mainPanel.add(infoPanel);
         mainPanel.add(separator1, BorderLayout.CENTER);
         mainPanel.add(randomizePanel);
         mainPanel.add(separator2, BorderLayout.CENTER);
         mainPanel.add(launchPanel);
+        mainPanel.add(separator3, BorderLayout.CENTER);
+        mainPanel.add(calculsPanel);
 
         this.add(mainPanel);
     }
