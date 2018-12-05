@@ -19,13 +19,15 @@ public class DisplayPanel extends JPanel {
     private DrawDelaunayTriangulation triangluationDelaunay;
 
     private boolean convexHullVisible, triangulationVisible, triangulationDelaunayVisible;
-    private boolean emptyCircle = false;
+    private boolean drawDebugCircle = false;
 
     public DisplayPanel(SortedSet<DrawablePoint> points_) {
         points = points_;
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent event) {
                 points.add(new DrawablePoint(event.getX(), event.getY()));
+                newTriangulationDelaunay(getPoints());
+                setTriangulationDelaunayVisible(true);
                 repaint();
             }
         });
@@ -44,7 +46,7 @@ public class DisplayPanel extends JPanel {
         if(triangulationVisible)
             triangulation.draw(g);
         if(triangulationDelaunayVisible)
-            triangluationDelaunay.draw(g, emptyCircle);
+            triangluationDelaunay.draw(g, drawDebugCircle);
 
         g.setColor(oldColor);
     }
@@ -63,6 +65,7 @@ public class DisplayPanel extends JPanel {
         this.triangluationDelaunay = new DrawDelaunayTriangulation(points);
         repaint();
     }
+
 
     public ArrayList<DrawablePoint> getPoints() {
         ArrayList<DrawablePoint> pointsList = new ArrayList<DrawablePoint>(points);

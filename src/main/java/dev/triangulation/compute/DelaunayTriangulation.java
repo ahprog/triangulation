@@ -59,10 +59,10 @@ public class DelaunayTriangulation {
          * Création de la boite
          */
         ArrayList<DrawablePoint> pointBoite = new ArrayList<DrawablePoint>();
-        pointBoite.add(new DrawablePoint(minX-maxX, minY-maxY));
-        pointBoite.add(new DrawablePoint(minX-maxX, maxY*2));
-        pointBoite.add(new DrawablePoint(maxX*2, maxY*2));
-        pointBoite.add(new DrawablePoint(maxX*2, minY-maxY));
+        pointBoite.add(new DrawablePoint(minX-maxX*9999, minY-maxY*9999));
+        pointBoite.add(new DrawablePoint(minX-maxX*9999, maxY*10000));
+        pointBoite.add(new DrawablePoint(maxX*10000, maxY*10000));
+        pointBoite.add(new DrawablePoint(maxX*10000, minY-maxY*9999));
 
         listTriangle.add(new DrawTriangle(pointBoite.get(0), pointBoite.get(1), pointBoite.get(2)));
         listTriangle.add(new DrawTriangle(pointBoite.get(2), pointBoite.get(3), pointBoite.get(0)));
