@@ -13,21 +13,22 @@ import javax.swing.JPanel;
 
 public class DisplayPanel extends JPanel {
 
+    private boolean dynamicCompute = true;
     private SortedSet<DrawablePoint> points;
     private DrawConvexHull convexHull;
     private DrawTriangulateShape triangulation;
-    private DrawDelaunayTriangulation triangluationDelaunay;
+    private DrawDelaunayTriangulation triangulationDelaunay;
 
-    private boolean convexHullVisible, triangulationVisible, triangulationDelaunayVisible;
+    private boolean convexHullVisible = false, triangulationVisible = false, triangulationDelaunayVisible = false;
     private boolean drawDebugCircle = false;
 
     public DisplayPanel(SortedSet<DrawablePoint> points_) {
         points = points_;
+        computeShapes();
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent event) {
                 points.add(new DrawablePoint(event.getX(), event.getY()));
-                newTriangulationDelaunay(getPoints());
-                setTriangulationDelaunayVisible(true);
+                computeShapesDynamic(false);
                 repaint();
             }
         });
@@ -35,18 +36,17 @@ public class DisplayPanel extends JPanel {
     }
 
     public void paintComponent(Graphics g) {
+        System.out.println(dynamicCompute);
         super.paintComponent(g);
         Color oldColor = g.getColor();
         g.setColor(Color.BLACK);
         for (DrawablePoint point : points) {
             point.draw(g);
         }
-        if(convexHullVisible)
-            convexHull.draw(g);
-        if(triangulationVisible)
-            triangulation.draw(g);
-        if(triangulationDelaunayVisible)
-            triangluationDelaunay.draw(g, drawDebugCircle);
+
+        triangulation.draw(g);
+        triangulationDelaunay.draw(g, drawDebugCircle);
+        convexHull.draw(g);
 
         g.setColor(oldColor);
     }
@@ -56,14 +56,28 @@ public class DisplayPanel extends JPanel {
         repaint();
     }
 
+    public void resetConvHull() {
+        this.convexHull = new DrawConvexHull(new ArrayList<DrawablePoint>());
+        repaint();
+    }
+
     public void newTriangulation(ArrayList<DrawablePoint> points){
         this.triangulation = new DrawTriangulateShape(points);
         repaint();
     }
 
-    public void newTriangulationDelaunay(ArrayList<DrawablePoint> points){
-        this.triangluationDelaunay = new DrawDelaunayTriangulation(points);
+    public void resetTriangulation() {
+        this.triangulation = new DrawTriangulateShape(new ArrayList<DrawablePoint>());
         repaint();
+    }
+
+    public void newTriangulationDelaunay(ArrayList<DrawablePoint> points){
+        this.triangulationDelaunay = new DrawDelaunayTriangulation(points);
+        repaint();
+    }
+
+    public void resetDelaunayTriangulation() {
+        this.triangulationDelaunay = new DrawDelaunayTriangulation(new ArrayList<DrawablePoint>());
     }
 
 
@@ -73,15 +87,13 @@ public class DisplayPanel extends JPanel {
     }
 
     public void newPoints(SortedSet<DrawablePoint> points) {
-        this.points = points;
-        repaint();
+            this.points = points;
+            repaint();
     }
 
     public void clear() {
         points.clear();
-        convexHullVisible = false;
-        triangulationVisible = false;
-        triangulationDelaunayVisible = false;
+        computeShapes();
         repaint();
     }
 
@@ -93,5 +105,47 @@ public class DisplayPanel extends JPanel {
         this.triangulationVisible = newValue;
     }
 
-    public void setTriangulationDelaunayVisible(boolean newValue) { this.triangulationDelaunayVisible = newValue; }
+    public void setTriangulationDelaunayVisible(boolean newValue) {
+        this.triangulationDelaunayVisible = newValue;
+    }
+
+    public void switchDynamicCompute() {
+        dynamicCompute = !dynamicCompute;
+        computeShapesDynamic(false);
+    }
+
+    public void computeShapes() {
+        if (convexHullVisible) {
+            newConvHull(getPoints());
+        }
+        else {
+            resetConvHull();
+        }
+
+        if (triangulationDelaunayVisible) {
+            newTriangulationDelaunay(getPoints());
+        }
+        else {
+            resetDelaunayTriangulation();
+        }
+
+        if (triangulationVisible) {
+            newTriangulation(getPoints());
+        }
+        else {
+            resetTriangulation();
+        }
+    }
+
+    public void computeShapesDynamic(boolean resetShapes) {
+        if (!dynamicCompute) {
+            if (resetShapes) {
+                resetTriangulation();
+                resetDelaunayTriangulation();
+                resetConvHull();
+            }
+            return;
+        }
+        computeShapes();
+    }
 }

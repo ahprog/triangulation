@@ -25,7 +25,7 @@ public class AppWindow extends JFrame {
         DisplayPanel displayPanel = new DisplayPanel(points);
 
         GUIPanel guiPanel = new GUIPanel(displayPanel);
-        guiPanel.setPreferredSize(new Dimension(200, height));
+        guiPanel.setMinimumSize(new Dimension(200, height));
         guiPanel.setMaximumSize(new Dimension(200, height));
 
         JPanel mainPanel = new JPanel();
@@ -35,7 +35,7 @@ public class AppWindow extends JFrame {
         mainPanel.add(displayPanel, BorderLayout.EAST);
         mainPanel.add(guiPanel, BorderLayout.WEST);
 
-        this.setMinimumSize(new Dimension(400, 300));
+        this.setMinimumSize(new Dimension(600, 500));
         this.addWindowListener(windowAdapter);
         this.add(mainPanel);
 

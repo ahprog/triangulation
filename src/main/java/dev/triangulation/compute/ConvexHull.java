@@ -18,6 +18,9 @@ public class ConvexHull {
 
     public ArrayList<DrawablePoint> getConvexHull(ArrayList<DrawablePoint> points) {
         ArrayList<DrawablePoint> convexHull = new ArrayList<DrawablePoint>();
+        if (points.size() == 0) {
+            return convexHull;
+        }
 
         ArrayList<DrawablePoint> pointsList = new ArrayList<DrawablePoint>(points);
 

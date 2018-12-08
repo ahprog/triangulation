@@ -5,6 +5,7 @@ import dev.triangulation.graphics.DrawableLine;
 import dev.triangulation.graphics.DrawablePoint;
 
 import java.awt.*;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.SortedSet;
@@ -20,6 +21,7 @@ public class TriangulateShape {
 
 
     public ArrayList<DrawablePoint> getTriangulationShape(ArrayList<DrawablePoint> points) {
+        if (points.size() == 0) return new ArrayList<DrawablePoint>();
         if(points.size() <= 3) {
             if (points.size() == 3) {
                 if(isAbove(points.get(0), points.get(1), points.get(2))<0){

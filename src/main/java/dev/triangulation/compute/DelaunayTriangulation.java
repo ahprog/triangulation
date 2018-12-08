@@ -32,6 +32,7 @@ public class DelaunayTriangulation {
     }
 
     public void getDelaunayTriangulation(ArrayList<DrawablePoint> points){
+        if (points.size() == 0) return;
 
         ArrayList<DrawTriangle> listTriangle = new ArrayList<DrawTriangle>();
         //ArrayList<Circle> cirCircle = new ArrayList<Circle>();
