@@ -36,7 +36,6 @@ public class DisplayPanel extends JPanel {
     }
 
     public void paintComponent(Graphics g) {
-        System.out.println(dynamicCompute);
         super.paintComponent(g);
         Color oldColor = g.getColor();
         g.setColor(Color.BLACK);
