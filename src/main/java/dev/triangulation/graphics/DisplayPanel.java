@@ -1,13 +1,10 @@
 package dev.triangulation.graphics;
 
-import dev.triangulation.compute.DelaunayTriangulation;
-
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.SortedSet;
 import javax.swing.JPanel;
 

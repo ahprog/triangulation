@@ -1,9 +1,7 @@
 package dev.triangulation.graphics;
 
 import dev.triangulation.compute.Triangle;
-
-import java.awt.*;
-import java.util.ArrayList;
+import java.awt.Graphics;
 
 public class DrawTriangle {
 

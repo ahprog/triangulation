@@ -4,12 +4,11 @@ import dev.triangulation.compute.PointsComparator;
 import dev.triangulation.graphics.AppWindow;
 import dev.triangulation.graphics.DrawablePoint;
 
-import java.util.Comparator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
 /**
- * Hello world!
+ *
  *
  */
 public class App 

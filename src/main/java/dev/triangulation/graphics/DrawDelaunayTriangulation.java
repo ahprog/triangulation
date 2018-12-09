@@ -1,8 +1,7 @@
 package dev.triangulation.graphics;
 
 import dev.triangulation.compute.DelaunayTriangulation;
-
-import java.awt.*;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class DrawDelaunayTriangulation {

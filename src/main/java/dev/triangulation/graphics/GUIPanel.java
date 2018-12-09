@@ -2,9 +2,23 @@ package dev.triangulation.graphics;
 
 import dev.triangulation.compute.PointsGenerator;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
+import javax.swing.JLabel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -29,7 +43,7 @@ public class GUIPanel extends JPanel {
         JPanel choicesPanel = new JPanel(new GridLayout(3, 1));
         final JPanel launchPanel = new JPanel(new GridLayout(1, 2, 5, 0));
 
-        JLabel label1 = new JLabel("<html><b>Triangulator</b><br/>Hey ça marche</html>");
+        JLabel label1 = new JLabel("<html><b>Triangulator</b></html>");
         label1.setFont(font);
         infoPanel.add(label1);
 

@@ -1,13 +1,13 @@
 package dev.triangulation.graphics;
 
-import dev.triangulation.compute.TriangulateShape;
-
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.SortedSet;
-import javax.swing.*;
-import javax.swing.border.Border;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.BoxLayout;
 
 public class AppWindow extends JFrame {
 

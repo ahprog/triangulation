@@ -1,7 +1,6 @@
 package dev.triangulation.compute;
 
 import dev.triangulation.graphics.DrawablePoint;
-
 import java.util.Comparator;
 
 

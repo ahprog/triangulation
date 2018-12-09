@@ -1,14 +1,10 @@
 package dev.triangulation.compute;
 
 import dev.triangulation.graphics.DrawTriangle;
-import dev.triangulation.graphics.DrawableLine;
 import dev.triangulation.graphics.DrawablePoint;
 
-import java.awt.*;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SortedSet;
 
 public class TriangulateShape {
 

@@ -1,12 +1,8 @@
 package dev.triangulation.compute;
 
-import dev.triangulation.graphics.DrawableLine;
 import dev.triangulation.graphics.DrawablePoint;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.lang.Math;
-import java.util.SortedSet;
 
 public class ConvexHull {
 

@@ -1,17 +1,13 @@
 package dev.triangulation.graphics;
 
 import dev.triangulation.compute.ConvexHull;
-import dev.triangulation.graphics.DrawableLine;
-import dev.triangulation.graphics.DrawablePoint;
-
-import java.awt.*;
-import java.util.List;
+import java.awt.Graphics;
+import java.awt.Color;
 import java.util.ArrayList;
-import java.util.SortedSet;
 
 public class DrawConvexHull {
 
-    public ConvexHull convexHull;
+    private ConvexHull convexHull;
 
     public DrawConvexHull(ArrayList<DrawablePoint> points){
         convexHull = new ConvexHull(points);

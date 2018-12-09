@@ -5,8 +5,6 @@ import dev.triangulation.graphics.DrawableLine;
 import dev.triangulation.graphics.DrawablePoint;
 
 import java.util.ArrayList;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 public class DelaunayTriangulation {
 

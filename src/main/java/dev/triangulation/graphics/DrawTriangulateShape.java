@@ -1,9 +1,7 @@
 package dev.triangulation.graphics;
 
-import dev.triangulation.compute.Triangle;
 import dev.triangulation.compute.TriangulateShape;
-
-import java.awt.*;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 public class DrawTriangulateShape {
