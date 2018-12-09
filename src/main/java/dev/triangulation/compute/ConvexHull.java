@@ -4,6 +4,11 @@ import dev.triangulation.graphics.DrawablePoint;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Un ensemble de points representant une enveloppe convexe.
+ * On utilise l'algorithme de division jusqu'a trouver une forme simple (triangle ou segment)
+ * puis on fusionne les enveloppes convexes.
+ */
 public class ConvexHull {
 
     public ArrayList<DrawablePoint> pointsConvHull;

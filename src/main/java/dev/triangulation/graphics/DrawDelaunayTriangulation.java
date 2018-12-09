@@ -4,6 +4,9 @@ import dev.triangulation.compute.DelaunayTriangulation;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+/**
+ * Permet de dessiner une DelaunayTriangulation.
+ */
 public class DrawDelaunayTriangulation {
     private DelaunayTriangulation triangles;
 

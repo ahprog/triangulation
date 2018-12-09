@@ -6,9 +6,14 @@ import dev.triangulation.graphics.DrawablePoint;
 
 import java.util.ArrayList;
 
+/**
+ * Un ensemble de triangles issus d'une triangulation de Delaunay.
+ * On utilise un algorithme d'Hermeline.
+ */
 public class DelaunayTriangulation {
 
     private ArrayList<DrawTriangle> triangleArrayList = new ArrayList<DrawTriangle>();
+    //Pour le debug, les cercles circonscrits
     public ArrayList<Circle> cirCircle = new ArrayList<Circle>();
 
     /**

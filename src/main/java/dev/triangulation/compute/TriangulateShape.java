@@ -6,6 +6,9 @@ import dev.triangulation.graphics.DrawablePoint;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Un triangulation simple d'un ensemble de points.
+ */
 public class TriangulateShape {
 
 

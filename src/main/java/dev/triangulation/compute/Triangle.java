@@ -2,6 +2,9 @@ package dev.triangulation.compute;
 
 import dev.triangulation.graphics.DrawablePoint;
 
+/**
+ * Une liaison entre trois points.
+ */
 public class Triangle {
 
     private DrawablePoint pt1, pt2, pt3;

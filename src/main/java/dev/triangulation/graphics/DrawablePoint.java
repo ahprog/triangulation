@@ -2,6 +2,9 @@ package dev.triangulation.graphics;
 
 import java.awt.Graphics;
 
+/**
+ * Un point.
+ */
 public class DrawablePoint {
 
     private double x, y;

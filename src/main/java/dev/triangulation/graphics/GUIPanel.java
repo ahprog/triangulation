@@ -24,6 +24,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+
+/**
+ * Interface de l'application, permet de choisir quelles formes generer.
+ */
 public class GUIPanel extends JPanel {
 
     public GUIPanel(final DisplayPanel displayPanel) {

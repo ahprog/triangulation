@@ -5,6 +5,9 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.util.ArrayList;
 
+/**
+ * Permet de dessiner une ConvexHull.
+ */
 public class DrawConvexHull {
 
     private ConvexHull convexHull;

@@ -4,6 +4,9 @@ import dev.triangulation.compute.TriangulateShape;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+/**
+ * Permet de dessiner une TriangulationShape (triangulation simple).
+ */
 public class DrawTriangulateShape {
 
     private TriangulateShape triangles;

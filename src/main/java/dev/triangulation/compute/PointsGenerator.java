@@ -5,6 +5,10 @@ import dev.triangulation.graphics.DrawablePoint;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+/**
+ * Genere un ensemble de points en positions aleatoires dans un rectangle
+ * dont les dimensions sont donnees en argument du constructeur.
+ */
 public class PointsGenerator {
 
     public static SortedSet<DrawablePoint> generate(int numberOfPoints, int maxX, int maxY) {

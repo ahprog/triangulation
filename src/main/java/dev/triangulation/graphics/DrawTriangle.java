@@ -3,6 +3,9 @@ package dev.triangulation.graphics;
 import dev.triangulation.compute.Triangle;
 import java.awt.Graphics;
 
+/**
+ * Dessine un Triangle.
+ */
 public class DrawTriangle {
 
     private Triangle triangle;

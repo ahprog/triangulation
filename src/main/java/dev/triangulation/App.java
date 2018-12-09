@@ -7,11 +7,7 @@ import dev.triangulation.graphics.DrawablePoint;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-/**
- *
- *
- */
-public class App 
+public class App
 {
     public static void main( String[] args )
     {

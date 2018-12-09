@@ -3,7 +3,10 @@ package dev.triangulation.compute;
 import dev.triangulation.graphics.DrawablePoint;
 import java.util.Comparator;
 
-
+/**
+ * Permet d'ordonner un ensemble de points dans un SortedSet.
+ * L'ordre est selon l'axe des X puis selon l'axe des Y.
+ */
 public class PointsComparator implements Comparator<DrawablePoint> {
     @Override
     public int compare(DrawablePoint point1, DrawablePoint point2) {

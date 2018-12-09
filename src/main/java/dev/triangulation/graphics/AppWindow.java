@@ -9,6 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
 
+/**
+* La classe AppWindow est notre fenetre divisée en une partie pour l'affichage des formes : DisplayPanel
+* et une partie d'interface avec des checkbox, ... : GUIPanel
+ */
 public class AppWindow extends JFrame {
 
     public AppWindow(int width, int height, SortedSet<DrawablePoint> points) {

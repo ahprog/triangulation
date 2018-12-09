@@ -2,6 +2,9 @@ package dev.triangulation.graphics;
 
 import java.awt.Graphics;
 
+/**
+ * DrawableLine represente une liaison entre deux DrawablePoint.
+ */
 public class DrawableLine {
     DrawablePoint point1;
     DrawablePoint point2;
