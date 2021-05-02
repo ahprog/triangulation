@@ -1,5 +1,5 @@
 # Triangulation
-Le devoir 3 du cours d'algorithmique
+exo 3 algorithmique
 
 Le projet est crée avec Maven 3.3.9 et le Java SDK 11
 
